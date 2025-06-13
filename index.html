@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TDS Virtual TA - IIT Madras</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo">
+                        <div class="logo-icon">TDS</div>
+                        <div class="logo-text">
+                            <h1>Virtual TA</h1>
+                            <p>The Data Science Course Assistant</p>
+                        </div>
+                    </div>
+                    <div class="iitm-branding">IIT Madras Online Degree</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="tab-nav">
+            <button class="tab-btn active" data-tab="virtual-ta">Virtual TA</button>
+            <button class="tab-btn" data-tab="api-docs">API Documentation</button>
+            <button class="tab-btn" data-tab="features">Features & Tech</button>
+            <button class="tab-btn" data-tab="deployment">Deployment</button>
+        </nav>
+
+        <!-- Virtual TA Tab -->
+        <div id="virtual-ta" class="tab-content active">
+            <div class="main-interface">
+                <div class="interface-header">
+                    <h2>Ask Your TDS Questions</h2>
+                    <p>Get instant answers about The Data Science course content, assignments, and policies.</p>
+                </div>
+
+                <!-- Sample Questions -->
+                <div class="sample-questions">
+                    <h3>Try These Sample Questions:</h3>
+                    <div class="question-grid">
+                        <button class="sample-question-btn" data-question="Should I use gpt-4o-mini which AI proxy supports, or gpt3.5 turbo?">
+                            Should I use gpt-4o-mini or gpt3.5 turbo?
+                        </button>
+                        <button class="sample-question-btn" data-question="If a student scores 10/10 on GA4 as well as a bonus, how would it appear on the dashboard?">
+                            How do bonus scores appear on dashboard?
+                        </button>
+                        <button class="sample-question-btn" data-question="I know Docker but have not used Podman before. Should I use Docker for this course?">
+                            Docker vs Podman for this course?
+                        </button>
+                        <button class="sample-question-btn" data-question="When is the TDS Sep 2025 end-term exam?">
+                            TDS Sep 2025 end-term exam date?
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question Input -->
+                <div class="question-form">
+                    <div class="form-group">
+                        <label for="question-input" class="form-label">Your Question:</label>
+                        <textarea id="question-input" class="form-control question-textarea" 
+                                placeholder="Type your question about TDS course content, assignments, policies, or technical issues..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="image-upload" class="form-label">Optional Image Upload:</label>
+                        <input type="file" id="image-upload" class="form-control" accept="image/*">
+                        <small class="form-text">Upload screenshots or diagrams to help explain your question</small>
+                    </div>
+
+                    <button id="submit-btn" class="btn btn--primary btn--lg">
+                        <span class="btn-text">Ask Virtual TA</span>
+                        <span class="loading-spinner hidden">Processing...</span>
+                    </button>
+                </div>
+
+                <!-- Response Area -->
+                <div id="response-area" class="response-area hidden">
+                    <div class="card">
+                        <div class="card__header">
+                            <h3>Response from TDS Virtual TA</h3>
+                        </div>
+                        <div class="card__body">
+                            <div id="response-answer" class="response-answer"></div>
+                            <div id="response-links" class="response-links"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- API Documentation Tab -->
+        <div id="api-docs" class="tab-content">
+            <div class="docs-section">
+                <h2>API Documentation</h2>
+                <p>Complete reference for integrating with the TDS Virtual TA API.</p>
+
+                <div class="api-section">
+                    <h3>Base URL</h3>
+                    <div class="code-block">
+                        <code>https://your-deployed-app.com</code>
+                    </div>
+                </div>
+
+                <div class="api-section">
+                    <h3>Endpoint</h3>
+                    <div class="method-badge">POST</div>
+                    <code>/api/</code>
+                </div>
+
+                <div class="api-section">
+                    <h3>Request Format</h3>
+                    <div class="code-block">
+<pre>{
+  "question": "string (required)",
+  "image": "string (optional, base64 encoded)"
+}</pre>
+                    </div>
+                </div>
+
+                <div class="api-section">
+                    <h3>Response Format</h3>
+                    <div class="code-block">
+<pre>{
+  "answer": "string",
+  "links": [
+    {
+      "url": "string",
+      "text": "string"
+    }
+  ]
+}</pre>
+                    </div>
+                </div>
+
+                <div class="api-section">
+                    <h3>cURL Example</h3>
+                    <div class="code-block">
+<pre>curl -X POST "https://your-deployed-app.com/api/" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "question": "Should I use Docker or Podman?",
+    "image": ""
+  }'</pre>
+                    </div>
+                </div>
+
+                <div class="api-section">
+                    <h3>Health Check</h3>
+                    <div class="method-badge get">GET</div>
+                    <code>/health</code>
+                    <p>Returns the health status of the API service.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features & Tech Tab -->
+        <div id="features" class="tab-content">
+            <div class="features-section">
+                <h2>Features & Technology</h2>
+                <p>Built with modern web technologies and best practices.</p>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>🚀 FastAPI Framework</h3>
+                        <p>High-performance REST API with automatic OpenAPI documentation</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🖼️ Image Processing</h3>
+                        <p>Base64 image encoding and processing for visual questions</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🌐 CORS Enabled</h3>
+                        <p>Cross-origin resource sharing for seamless web integration</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>⚡ Error Handling</h3>
+                        <p>Comprehensive error handling with informative responses</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🔍 Health Checks</h3>
+                        <p>Built-in health monitoring for production environments</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🔐 Security</h3>
+                        <p>Embedded JWT API key authentication system</p>
+                    </div>
+                </div>
+
+                <div class="tech-stack">
+                    <h3>Technology Stack</h3>
+                    <div class="tech-list">
+                        <span class="tech-tag">Python 3.11+</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">Pydantic</span>
+                        <span class="tech-tag">Uvicorn</span>
+                        <span class="tech-tag">Base64</span>
+                        <span class="tech-tag">JSON</span>
+                        <span class="tech-tag">CORS</span>
+                        <span class="tech-tag">OpenAPI</span>
+                    </div>
+                </div>
+
+                <div class="file-structure">
+                    <h3>Project Structure</h3>
+                    <div class="code-block">
+<pre>tds-virtual-ta/
+├── main.py              # FastAPI application
+├── requirements.txt     # Dependencies
+├── runtime.txt         # Python version
+├── Procfile           # Deployment config
+├── scraper.py         # Discourse scraper
+├── test_main.py       # Test suite
+├── quick_start.sh     # Setup script
+└── README.md          # Documentation</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Deployment Tab -->
+        <div id="deployment" class="tab-content">
+            <div class="deployment-section">
+                <h2>Deployment Instructions</h2>
+                <p>Deploy your TDS Virtual TA on various cloud platforms.</p>
+
+                <div class="deployment-platforms">
+                    <h3>Supported Platforms</h3>
+                    <div class="platform-grid">
+                        <div class="platform-card">
+                            <h4>🔥 Render</h4>
+                            <p>Connect GitHub repo and deploy automatically</p>
+                        </div>
+                        <div class="platform-card">
+                            <h4>🟣 Heroku</h4>
+                            <p>Uses Procfile for seamless deployment</p>
+                        </div>
+                        <div class="platform-card">
+                            <h4>🚂 Railway</h4>
+                            <p>Zero-config deployment from Git</p>
+                        </div>
+                        <div class="platform-card">
+                            <h4>▲ Vercel</h4>
+                            <p>Serverless deployment with edge functions</p>
+                        </div>
+                        <div class="platform-card">
+                            <h4>☁️ Google Cloud Run</h4>
+                            <p>Containerized deployment with auto-scaling</p>
+                        </div>
+                        <div class="platform-card">
+                            <h4>⚡ AWS Lambda</h4>
+                            <p>Serverless functions with API Gateway</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="setup-instructions">
+                    <h3>Quick Setup</h3>
+                    <div class="setup-steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Clone Repository</h4>
+                                <div class="code-block">
+                                    <code>git clone https://github.com/your-username/tds-virtual-ta.git</code>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Install Dependencies</h4>
+                                <div class="code-block">
+                                    <code>pip install -r requirements.txt</code>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Run Application</h4>
+                                <div class="code-block">
+                                    <code>uvicorn main:app --host 0.0.0.0 --port 8000</code>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>Test API</h4>
+                                <div class="code-block">
+                                    <code>curl http://localhost:8000/health</code>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="deployment-files">
+                    <h3>Key Configuration Files</h3>
+                    <div class="file-list">
+                        <div class="file-item">
+                            <h4>requirements.txt</h4>
+                            <p>Python dependencies for the application</p>
+                            <a href="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/3235a20efed17ff1326f79314578dfbe/6896959d-d146-4e0f-8e83-4da74d44848b/4d7c51b1.txt" target="_blank" class="btn btn--outline btn--sm">View File</a>
+                        </div>
+                        <div class="file-item">
+                            <h4>Procfile</h4>
+                            <p>Heroku deployment configuration</p>
+                            <a href="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/3235a20efed17ff1326f79314578dfbe/2965def5-bf4d-4cd8-b53d-b65be5867205/0a992319" target="_blank" class="btn btn--outline btn--sm">View File</a>
+                        </div>
+                        <div class="file-item">
+                            <h4>main.py</h4>
+                            <p>FastAPI application source code</p>
+                            <a href="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/3235a20efed17ff1326f79314578dfbe/3ed01149-27e3-4f52-8e4e-96d03b4dddbd/b10564ab.py" target="_blank" class="btn btn--outline btn--sm">View File</a>
+                        </div>
+                        <div class="file-item">
+                            <h4>README.md</h4>
+                            <p>Complete documentation and setup guide</p>
+                            <a href="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/3235a20efed17ff1326f79314578dfbe/53b98eb4-be0a-49e8-bd65-2226bb35dcb1/b3356305.md" target="_blank" class="btn btn--outline btn--sm">View File</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; 2025 IIT Madras Online Degree Program - TDS Virtual TA</p>
+                <div class="footer-links">
+                    <a href="https://discourse.onlinedegree.iitm.ac.in" target="_blank">Course Forum</a>
+                    <a href="https://tds.s-anand.net" target="_blank">Course Website</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
